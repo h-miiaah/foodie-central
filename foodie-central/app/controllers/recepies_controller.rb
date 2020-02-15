@@ -41,4 +41,10 @@ class RecipesController < ApplicationController
         end
     end
 
+    delete '/recipes/:id' do
+        recipe = Recipe.find(params[:id])
+        recipe.destroy
+        redirect '/recipes'
+    end
+    
 end
