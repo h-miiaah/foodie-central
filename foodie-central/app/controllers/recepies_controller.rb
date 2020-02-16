@@ -1,17 +1,17 @@
 class RecipesController < ApplicationController
     
+    before do
+        require_login
+    end
+
+    # CREATE
     get '/recipes/new' do
-        if logged_in?
-            erb :'/recipes/new'
-        else
-            redirect '/login'
-        end
+        erb :'/recipes/new'
     end
     
     post '/recipes' do
         recipe = current_user.recipes.build(params)
-        if !recipe.title.empty? && !recipe.instructions.empty? && !recipe.cook_time.empty?
-            recipe.save
+        if recipe.save
             redirect '/recipes'
         else
             @error = "All fields must be filled out. Please try again."
@@ -19,31 +19,25 @@ class RecipesController < ApplicationController
         end
     end
 
+    # READ
     get '/recipes' do
-        if logged_in?
-            @recipes = Recipe.all
-            erb :'recipes/index'
-        else
-            redirect '/login'
-        end
+        @recipes = Recipe.all
+        erb :'recipes/index'
     end
 
     get '/recipes/:id' do
-        if logged_in?
-            @recipe = Recipe.find(params[:id])
+        @recipe = Recipe.find_by(id: params[:id])
+        if @recipe
             erb :'recipes/show'
         else
-            redirect '/login'
+            redirect '/recipes'
         end
     end
 
+    # UPDATE
     get '/recipes/:id/edit' do
-        if logged_in?
-            @recipe = Recipe.find(params[:id])
-            erb :'recipes/edit'
-        else
-            redirect '/login'
-        end
+        @recipe = Recipe.find(params[:id])
+        erb :'recipes/edit'
     end
 
     patch '/recipes/:id' do
@@ -57,6 +51,7 @@ class RecipesController < ApplicationController
         end
     end
 
+    # DELETE
     delete '/recipes/:id' do
         recipe = Recipe.find(params[:id])
         recipe.destroy

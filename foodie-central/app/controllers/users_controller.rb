@@ -6,17 +6,12 @@ class UsersController < ApplicationController
 
     post '/signup' do
         user = User.create(params)
-        if user.username.empty? || user.email.empty? || user.password_digest.empty?
-            @error = "Username, Email, and Password must be filled out."
-            erb :'users/signup'
-        elsif
-            User.find_by(username: user.username)
-            @error = "Username taken, please use a different username."
-            erb :'users/signup'
-        else
-            user.save
+        if user.save
             session[:user_id] = user.id
             redirect '/recipes'
+        else
+            @error = "Something went wrong trying to sign up, please try again."
+            erb :'users/signup'
         end
     end
 

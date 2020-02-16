@@ -17,8 +17,13 @@
     <div>
       <nav>
         <a href="/">Home</a>
-        <a href="/recipes">Recipes</a>
-        <a href="/logout">Log Out</a>
+        <% if logged_in? %>
+          <a href="/recipes">Recipes</a>
+          <a href="/logout">Log Out</a>
+        <% else %>
+          <a href="/signup">Sign Up</a>
+          <a href="/login">Login</a>
+        <% end %>
       </nav>
     </div>
 
