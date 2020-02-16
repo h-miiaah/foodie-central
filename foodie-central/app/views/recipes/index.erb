@@ -8,7 +8,9 @@
 <div>
     <% @recipes.each do |recipe| %>
         <h2><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h2>
-        <a href="/recipes/<%= recipe.id %>/edit">Edit Recipe</a>
+        <% if current_user == recipe.user %>
+           <a href="/recipes/<%= recipe.id %>/edit">Edit Recipe</a>
+        <% end %>
         <p><h4>Instructions: </h4><%= recipe.instructions %></p>
         <p><h4>Cook Time: </h4><%= recipe.cook_time %></p>
     <% end %>

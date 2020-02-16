@@ -1,11 +1,15 @@
 class RecipesController < ApplicationController
     
     get '/recipes/new' do
-        erb :'/recipes/new'
+        if logged_in?
+            erb :'/recipes/new'
+        else
+            redirect '/login'
+        end
     end
     
     post '/recipes' do
-        recipe = Recipe.new(params)
+        recipe = current_user.recipes.build(params)
         if !recipe.title.empty? && !recipe.instructions.empty? && !recipe.cook_time.empty?
             recipe.save
             redirect '/recipes'
@@ -16,18 +20,30 @@ class RecipesController < ApplicationController
     end
 
     get '/recipes' do
-        @recipes = Recipe.all
-        erb :'recipes/index'
+        if logged_in?
+            @recipes = Recipe.all
+            erb :'recipes/index'
+        else
+            redirect '/login'
+        end
     end
 
     get '/recipes/:id' do
-        @recipe = Recipe.find(params[:id])
-        erb :'recipes/show'
+        if logged_in?
+            @recipe = Recipe.find(params[:id])
+            erb :'recipes/show'
+        else
+            redirect '/login'
+        end
     end
 
     get '/recipes/:id/edit' do
-        @recipe = Recipe.find(params[:id])
-        erb :'recipes/edit'
+        if logged_in?
+            @recipe = Recipe.find(params[:id])
+            erb :'recipes/edit'
+        else
+            redirect '/login'
+        end
     end
 
     patch '/recipes/:id' do

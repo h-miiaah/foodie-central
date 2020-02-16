@@ -4,5 +4,7 @@
 
 <form action="/recipes/<%= @recipe.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Recipe">
+    <% if @recipe.user == current_user %>
+        <input type="submit" value="Delete Recipe">
+    <% end %>
 </form>
