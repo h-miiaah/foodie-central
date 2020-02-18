@@ -4,15 +4,19 @@
 Clone this repository.
 
 Add all gems by running:
+
 $ bundle install
 
-Migrate tables by running: 
+Migrate tables by running:
+
 $ rake db:migrate 
 
 Seed the database by running:
+
 $ rake db:seed
 
 View app in browser by running:
+
 $ shotgun
 
 ## Description
