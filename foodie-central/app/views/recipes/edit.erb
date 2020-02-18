@@ -1,5 +1,8 @@
 <h1>Edit <%= @recipe.title %></h1>
-<h4><em><%= @error %></em></h4>
+
+<% if flash[:error] %>
+    <h4 style="color:red"><em><%= flash[:error] %></h4></em>
+<% end %>
 <form action="/recipes/<%= @recipe.id %>" method="POST">
     <input type="hidden" name="_method" value="PATCH">
 
