@@ -2,10 +2,22 @@
 
 ## Install
 Clone this repository.
-'bundle install' to install all the required gems.
-Run 'rake db:migrate' to migrate tables.
-Run 'rake db:seed' to populate recipes.
-Run 'shotgun' to view the app in your browser.
+
+Add all gems by running:
+
+$ bundle install
+
+Migrate tables by running:
+
+$ rake db:migrate 
+
+Seed the database by running:
+
+$ rake db:seed
+
+View app in browser by running:
+
+$ shotgun
 
 ## Description
 Foodie Central is an app where everyone can share thier recipes with others, and even find new recipes to try out!
