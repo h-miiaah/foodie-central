@@ -3,6 +3,10 @@
 ## Install
 Clone this repository.
 
+Change directory to the foodie-central directory:
+
+$ cd foodie-central
+
 Add all gems by running:
 
 $ bundle install
