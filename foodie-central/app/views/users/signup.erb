@@ -3,6 +3,7 @@
 <% if flash[:error] %>
     <h4 style="color:red"><em><%= flash[:error] %></h4></em>
 <% end %>
+
 <form action="/signup" method="POST">
     <label for="username">Username: </label>
     <input type="text" name="username" placeholder="Username">

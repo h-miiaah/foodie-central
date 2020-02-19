@@ -3,6 +3,7 @@
 <% if flash[:error] %>
     <h4 style="color:red"><em><%= flash[:error] %></h4></em>
 <% end %>
+
 <form action="/recipes" method="POST">
     <label for="title">Title: </label>
     <input type="text" name="title" placeholder="Title">
