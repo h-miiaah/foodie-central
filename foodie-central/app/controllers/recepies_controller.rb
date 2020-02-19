@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
         if recipe.save
             redirect '/recipes'
         else
-            flash[:error] = "All fields must be filled out. Please try again."
+            flash.now[:error] = "All fields must be filled out. Please try again."
             erb :'/recipes/new'
         end
     end
@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
         @recipe.update(params["recipe"])
         redirect "/recipes/#{@recipe.id}"
         else
-            flash[:error] = "All fields must be filled out. Please try again."
+            flash.now[:error] = "All fields must be filled out. Please try again."
             erb :'/recipes/edit' 
         end
     end
