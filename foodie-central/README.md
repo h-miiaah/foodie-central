@@ -5,23 +5,23 @@ Clone this repository.
 
 Change directory to the foodie-central directory:
 
-$ cd foodie-central
+```$ cd foodie-central```
 
 Add all gems by running:
 
-$ bundle install
+```$ bundle install```
 
 Migrate tables by running:
 
-$ rake db:migrate 
+```$ rake db:migrate ```
 
 Seed the database by running:
 
-$ rake db:seed
+```$ rake db:seed```
 
 View app in browser by running:
 
-$ shotgun
+```$ shotgun```
 
 ## Description
 Foodie Central is an app where everyone can share thier recipes with others, and even find new recipes to try out!
