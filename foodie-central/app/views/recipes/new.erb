@@ -1,7 +1,14 @@
-<h1>Create Recipe</h1>
+<div class="container">
+<br>
+<br>
+<br>
+<h1 class="text-center">Create Recipe</h1>
 
+<div class="form-group">
 <% if flash[:error] %>
-    <h4 style="color:red"><em><%= flash[:error] %></h4></em>
+<div class="alert alert-danger" role="alert">
+    <h4><em><%= flash[:error] %></h4></em>
+</div>
 <% end %>
 
 <form action="/recipes" method="POST">
@@ -17,5 +24,7 @@
     <input type="text" name="cook_time" placeholder="Cook Time">
     <br>
     <br>
-    <input type="submit" value="Create Recipe">
+    <button type="submit" class="btn btn-primary">Create Recipe</button>
 </form>
+</div>
+</div>

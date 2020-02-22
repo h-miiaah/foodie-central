@@ -1,7 +1,14 @@
+<div class="container">
+<br>
+<br>
+<br>
 <h1>Edit <%= @recipe.title %></h1>
 
+<div class="form-group">
 <% if flash[:error] %>
-    <h4 style="color:red"><em><%= flash[:error] %></h4></em>
+<div class="alert alert-danger" role="alert">
+    <h4><em><%= flash[:error] %></h4></em>
+</div>
 <% end %>
 
 <form action="/recipes/<%= @recipe.id %>" method="POST">
@@ -19,5 +26,7 @@
     <input type="text" name="recipe[cook_time]" value="<%= @recipe.cook_time %>">
     <br>
     <br>
-    <input type="submit" value="Edit Recipe">
+    <button type="submit" class="btn btn-primary">Edit Recipe</button>
 </form>
+</div>
+</div>

@@ -1,7 +1,13 @@
+<div class="container">
+<br>
+<br>
+<br>
 <h1>Login</h1>
-
+<div class="form-group">
 <% if flash[:error] %>
-    <h4 style="color:red"><em><%= flash[:error] %></h4></em>
+<div class="alert alert-danger" role="alert">
+    <h4><em><%= flash[:error] %></h4></em>
+</div>
 <% end %>
 
 <form action="/login" method="POST">
@@ -14,5 +20,7 @@
     <label for="password_digest">Password: </label>
     <input type="password" name="password_digest" placeholder="Password">
     <br>
-    <input type="submit" value="Login">
+    <button type="submit" class="btn btn-primary">Login</button>
 </form>
+</div>
+</div>

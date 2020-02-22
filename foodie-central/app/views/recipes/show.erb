@@ -1,10 +1,15 @@
-<h1><%= @recipe.title %></h1>
+<div class="container">
+<br>
+<br>
+<br>
+<h1 class="text-center"><%= @recipe.title %></h1>
 <p><h4>Instructions: </h4><%= @recipe.instructions %></p>
 <p><h4>Cook Time: </h4><%= @recipe.cook_time %></p>
 
 <form action="/recipes/<%= @recipe.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <% if @recipe.user == current_user %>
-        <input type="submit" value="Delete Recipe">
+        <button type="submit" class="btn btn-primary">Delete Recipe</button>
     <% end %>
 </form>
+</div>
