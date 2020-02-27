@@ -8,9 +8,10 @@ class UsersController < ApplicationController
         user = User.create(params)
         if user.save
             session[:user_id] = user.id
+            binding.pry
             redirect '/recipes'
         elsif
-            params[:username].empty? || params[:email].empty? || params[:password_digest].empty?
+            params[:username].empty? || params[:email].empty? || params[:password].empty?
             flash.now[:error] = "All fields are required to sign up. Please try again."
             erb :'users/signup'
         end
@@ -20,12 +21,14 @@ class UsersController < ApplicationController
         erb :'users/login'
     end
 
+
+    # use authenticate on the params password field
     post '/login' do
-        if params[:username].empty? || params[:email].empty? || params[:password_digest].empty?
+        if params[:username].empty? || params[:email].empty? || params[:password].empty?
             flash.now[:error] = "Username, Email, and Password must be filled out."
             erb :'users/login'
         elsif 
-            user = User.find_by(username: params[:username], email: params[:email], password_digest: params[:password_digest])
+            user = User.find_by(username: params[:username], email: params[:email], password_digest: params[:password])
                 session[:user_id] = user.id
                 redirect '/recipes'
         else

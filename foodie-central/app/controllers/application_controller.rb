@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
   end
   
   def current_user
-    User.find_by(id: session[:user_id])
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   def logged_in?
@@ -29,5 +29,10 @@ class ApplicationController < Sinatra::Base
       redirect '/login'
     end
   end
+
+  def authorized_user(recipe)
+    current_user.id == recipe.user_id
+  end
+
 
 end

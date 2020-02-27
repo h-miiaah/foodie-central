@@ -37,7 +37,13 @@ class RecipesController < ApplicationController
     # UPDATE
     get '/recipes/:id/edit' do
         @recipe = Recipe.find(params[:id])
-        erb :'recipes/edit'
+        if authorized_user(@recipe)
+            erb :'recipes/edit'
+        else
+            # flash message youre not authorized to edit recipe.
+            flash.now[:error] = "You are not authorized to edit this recipe."
+            redirect '/recipes'
+        end
     end
 
     patch '/recipes/:id' do
