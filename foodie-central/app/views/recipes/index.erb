@@ -4,6 +4,12 @@
 <br>
 <h1>Recipes</h1>
 <br>
+<% if flash[:error] %>
+<div class="alert alert-danger" role="alert">
+    <h4><em><%= flash[:error] %></h4></em>
+</div>
+<% end %>
+<br>
 
 <a href="/recipes/new">Create New Recipe</a>
 <br>

@@ -10,6 +10,7 @@
     <h4><em><%= flash[:error] %></h4></em>
 </div>
 <% end %>
+<br>
 
 <form action="/recipes/<%= @recipe.id %>" method="POST">
     <input type="hidden" name="_method" value="PATCH">

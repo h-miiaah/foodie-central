@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
             erb :'recipes/edit'
         else
             # flash message youre not authorized to edit recipe.
-            flash.now[:error] = "You are not authorized to edit this recipe."
+            flash.keep[:error] = "You are not authorized to edit this recipe."
             redirect '/recipes'
         end
     end
