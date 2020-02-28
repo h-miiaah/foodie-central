@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
     # use authenticate on the params password field
     post '/login' do
-        user = User.find_by(username: params[:username], email: params[:email], password_digest: params[:password])
+        user = User.find_by(username: params[:username], email: params[:email])
         if params[:username].empty? || params[:email].empty? || params[:password].empty?
             flash.now[:error] = "Username, Email, and Password must be filled out."
             erb :'users/login'
